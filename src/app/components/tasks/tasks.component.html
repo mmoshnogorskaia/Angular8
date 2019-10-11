@@ -1,0 +1,27 @@
+<div class="tasks">
+  <form autocomplete="off"
+    ngNativeValidate
+    (ngSubmit)="onAddTask(task)"
+    class="tasks__form form">
+    <input [(ngModel)]="task.text"
+      name="task"
+      class="form__control"
+      required
+      placeholder="Название задачи">
+    <button type="submit">
+      Создать
+    </button>
+  </form>
+  <div class="tasks__list">
+    <div *ngFor="let task of tasks; let i = index"
+      class="task">
+      <input type="checkbox" name="task" [(ngModel)]="task.complete">
+      <div class="task__text" [ngClass]="{'task_complete': task.complete}">
+        {{task.text}}
+      </div>
+      <button class="task__delete" (click)="onDeleteTask(tasks, i)">
+        x
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="app-container">
+  <div class="navigation">
+    <a *ngFor="let path of paths"
+      class="navigation__item"
+      routerLinkActive="navigation__item_active"
+      routerLink="{{path.link}}">
+      {{path.name}}
+    </a>
+  </div>
+  <router-outlet></router-outlet>
+</div>

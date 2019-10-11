@@ -1,0 +1,29 @@
+<div class="reminders">
+  <form autocomplete="off"
+    ngNativeValidate
+    (ngSubmit)="onAddReminder(reminder)"
+    class="reminders__form form">
+    <div *ngFor="let key of ['date', 'time', 'text']">
+      <input [(ngModel)]="reminder[key]"
+        class="form__control"
+        [ngClass]="key"
+        name="{{key}}"
+        type="{{key}}"
+        required>
+    </div>
+    <button type="submit" class="form__submit">
+      Создать
+    </button>
+  </form>
+  <div class="reminders__list">
+    <div *ngFor="let reminder of reminders; let i = index"
+      class="reminders__item reminder"
+      [ngClass]="{'reminder_inactive': !reminder.active}">
+      <div class="reminder__date">{{reminder.date}}</div>
+      <div class="reminder__time">{{reminder.time}}</div>
+      <div class="reminder__text">{{reminder.text}}</div>
+      <button (click)="onDeleteReminder(reminders, i)" class="reminder__delete">
+        x
+      </button>
+    </div>
+</div>

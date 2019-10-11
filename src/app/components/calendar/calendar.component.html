@@ -1,0 +1,18 @@
+<div class="calendar">
+  <h1 class="calendar__name">{{month}}</h1>
+  <div class="calendar__header header">
+    <div *ngFor="let weekday of weekdays" class="header__item">
+      <b>{{weekday}}</b>
+    </div>
+  </div>
+  <div class="calendar__body">
+    <div *ngFor="let day of days"
+      class="calendar__item"
+      [ngClass]="{
+        'calendar__item_highlighted': day.isToday,
+        'calendar__item_disabled': !day.number
+      }">
+      {{day.number}}
+    </div>
+  </div>
+</div>
